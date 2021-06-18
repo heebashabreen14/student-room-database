@@ -5,24 +5,24 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Word::class], version = 1, exportSchema = false)
-abstract class WordDatabase: RoomDatabase() {
+@Database(entities = [Student::class], version = 1, exportSchema = false)
+abstract class StudentDatabase: RoomDatabase() {
 
-    abstract fun wordDao(): WordDao
+    abstract fun studentDao(): StudentDao
 
     companion object{
 
         @Volatile
-        private var INSTANCE: WordDatabase? = null
+        private var INSTANCE: StudentDatabase? = null
 
-        fun getDatabase(context: Context): WordDatabase {
+        fun getDatabase(context: Context): StudentDatabase {
 
             return INSTANCE ?: synchronized(this){
 
                 val instance = Room.databaseBuilder(
                     context,
-                    WordDatabase::class.java,
-                    "database_words"
+                    StudentDatabase::class.java,
+                    "database_students"
                 ).build()
                 INSTANCE = instance
                 instance

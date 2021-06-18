@@ -47,4 +47,16 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="6"
         tools:listitem="@layout/recyclerview_item" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_all"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Delete All"
+        android:background="#9C27B0"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

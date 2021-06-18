@@ -4,22 +4,23 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface WordDao {
+interface StudentDao {
 
-    @Query("SELECT * FROM table_word ORDER BY column_word ASC")
-    fun getAlphabetizedWords(): Flow<List<Word>>
+    @Query("SELECT * FROM table_student ORDER BY column_student_word ASC")
+    fun getAlphabetizedStudents(): Flow<List<Student>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(word: Word)
+    suspend fun insert(student: Student)
 
-    @Query("DELETE FROM table_word")
+    @Query("DELETE FROM table_student")
     suspend fun deleteAll()
 
     //@Query("DELETE FROM table_word")
     //suspend fun deleteOne(word: Word)
 
     @Delete
-    suspend fun deleteOneStudent(word: Word)
+    suspend fun deleteOneStudent(student: Student)
 
 }
+
 

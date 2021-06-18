@@ -1,20 +1,20 @@
 package com.example.roomdatabaseexample
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
 
-        private val viewModel: WordViewModel by viewModels{
-            WordViewModelFactory((application as WordsApplication).repository)
-        }
+    private val viewModel: StudentViewModel by viewModels {
+        StudentViewModelFactory((application as StudentsApplication).repository)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,23 +23,34 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
-
         val recyclerView = findViewById<RecyclerView>(R.id.students_recycler_view)
 
-        val adapter = WordListAdapter()
+        val adapter = StudentListAdapter(listener)
         recyclerView.adapter = adapter
 
         val editStudent: EditText = findViewById(R.id.edit_student)
-        val button: Button= findViewById(R.id.button_save)
+        val button: Button = findViewById(R.id.button_save)
+
         button.setOnClickListener {
             val name = editStudent.text.toString()
-            viewModel.insert(Word(name))
+            viewModel.insert(Student(name))
         }
 
-        viewModel.allWords.observe(this, { list ->
+        val buttonDeleteAll:Button = findViewById(R.id.delete_all)
+        buttonDeleteAll.setOnClickListener{
+            viewModel.deleteAllStudents()
+        }
+
+        viewModel.allStudents.observe(this, { list ->
             adapter.submitList(list)
         })
 
+
     }
+    val listener = StudentListAdapter.OnClickListener {
+
+        viewModel.deleteSelectedStudent(it)
+    }
+
 }
+

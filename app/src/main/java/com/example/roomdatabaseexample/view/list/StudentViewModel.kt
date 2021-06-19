@@ -1,6 +1,8 @@
-package com.example.roomdatabaseexample
+package com.example.roomdatabaseexample.view.list
 
 import androidx.lifecycle.*
+import com.example.roomdatabaseexample.modal.Student
+import com.example.roomdatabaseexample.repository.StudentRepository
 import kotlinx.coroutines.launch
 
 class StudentViewModel(

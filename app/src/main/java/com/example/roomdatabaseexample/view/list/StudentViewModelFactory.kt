@@ -1,7 +1,8 @@
-package com.example.roomdatabaseexample
+package com.example.roomdatabaseexample.view.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.roomdatabaseexample.repository.StudentRepository
 
 
 class StudentViewModelFactory(

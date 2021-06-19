@@ -1,9 +1,10 @@
-package com.example.roomdatabaseexample
+package com.example.roomdatabaseexample.repository.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.roomdatabaseexample.modal.Student
 
 @Database(entities = [Student::class], version = 1, exportSchema = false)
 abstract class StudentDatabase: RoomDatabase() {

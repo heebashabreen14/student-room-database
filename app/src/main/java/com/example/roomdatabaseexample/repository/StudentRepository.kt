@@ -1,6 +1,8 @@
-package com.example.roomdatabaseexample
+package com.example.roomdatabaseexample.repository
 
 import androidx.annotation.WorkerThread
+import com.example.roomdatabaseexample.repository.database.StudentDao
+import com.example.roomdatabaseexample.modal.Student
 import kotlinx.coroutines.flow.Flow
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO

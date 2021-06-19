@@ -1,6 +1,7 @@
-package com.example.roomdatabaseexample
+package com.example.roomdatabaseexample.repository.database
 
 import androidx.room.*
+import com.example.roomdatabaseexample.modal.Student
 import kotlinx.coroutines.flow.Flow
 
 @Dao

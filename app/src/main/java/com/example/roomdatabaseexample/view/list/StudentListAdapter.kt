@@ -1,4 +1,4 @@
-package com.example.roomdatabaseexample
+package com.example.roomdatabaseexample.view.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roomdatabaseexample.R
+import com.example.roomdatabaseexample.modal.Student
 
 class StudentListAdapter(
     private val clickListener: OnClickListener
@@ -33,7 +35,7 @@ class StudentListAdapter(
         }
     }
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        val student: Student=getItem(position)
+        val student: Student =getItem(position)
         holder.bind(student, clickListener)
     }
 

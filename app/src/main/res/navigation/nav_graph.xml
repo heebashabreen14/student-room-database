@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_studentListFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_studentListFragment_to_editorFragment2"
+            app:destination="@id/editorFragment2" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -22,5 +25,16 @@
         <argument
             android:name="studentDetailArgs"
             app:argType="com.example.roomdatabaseexample.modal.Student" />
+    </fragment>
+    <fragment
+        android:id="@+id/editorFragment2"
+        android:name="com.example.roomdatabaseexample.view.editor.EditorFragment"
+        android:label="fragment_editor"
+        tools:layout="@layout/fragment_editor" >
+        <argument
+            android:name="editStudentDataArgs"
+            app:argType="com.example.roomdatabaseexample.modal.Student"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

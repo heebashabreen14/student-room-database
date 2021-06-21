@@ -35,19 +35,20 @@ class StudentListFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.students_recycler_view)
         val buttonDeleteAll: Button = view.findViewById(R.id.delete_all)
-        val editStudent: EditText = view.findViewById(R.id.edit_student)
-        val button: Button = view.findViewById(R.id.button_save)
-
+        val buttonGotoEditor: Button = view.findViewById(R.id.go_to_editor)
         val adapter = StudentListAdapter(listener)
-        recyclerView.adapter = adapter
 
-        button.setOnClickListener {
-            val name = editStudent.text.toString()
-            viewModel.insert(Student(name))
-        }
+        recyclerView.adapter = adapter
 
         buttonDeleteAll.setOnClickListener{
             viewModel.deleteAllStudents()
+        }
+
+        buttonGotoEditor.setOnClickListener{
+            findNavController().navigate(
+                StudentListFragmentDirections.actionStudentListFragmentToEditorFragment2(null)
+
+            )
         }
 
         viewModel.allStudents.observe(viewLifecycleOwner, { list ->
@@ -56,9 +57,9 @@ class StudentListFragment : Fragment() {
 
     }
 
-    private val listener = StudentListAdapter.OnClickListener {
+    private val listener = StudentListAdapter.OnClickListener { student ->
        findNavController().navigate(
-           StudentListFragmentDirections.actionStudentListFragmentToDetailFragment(it)
+           StudentListFragmentDirections.actionStudentListFragmentToEditorFragment2(student)
        )
     }
 

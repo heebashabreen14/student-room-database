@@ -9,8 +9,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "table_student")
 data class Student(
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "column_student_id")
+    val id: Int,
 
-    @PrimaryKey
     @ColumnInfo(name = "column_student_word")
     val studentName: String
 

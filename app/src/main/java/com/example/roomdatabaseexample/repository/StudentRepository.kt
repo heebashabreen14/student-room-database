@@ -32,4 +32,9 @@ class StudentRepository(
     suspend fun deleteAllStudents(){
         studentDao.deleteAll()
     }
+
+    @WorkerThread
+    suspend fun updateOneStudent(student: Student){
+        studentDao.updateStudent(student)
+    }
 }

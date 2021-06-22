@@ -42,21 +42,31 @@ class EditorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val editStudent: EditText = view.findViewById(R.id.edit_student)
+        val editstudentid: EditText = view.findViewById(R.id.edit_student_id)
         val button: Button = view.findViewById(R.id.button_save)
         val updateButton = view.findViewById<Button>(R.id.button_update)
         editStudent.setText(student?.studentName)
 
+        if(student?.id.toString() == "null"){
+            editstudentid.setText("")
+        }else{
+            editstudentid.setText(student?.id.toString())
+
+        }
 
         Log.e("Editor Fragment", "On View Created")
         button.setOnClickListener {
             val name = editStudent.text.toString()
-            viewModel.insert(Student(2,name))
+            val id = editstudentid.text.toString().toInt()
+            viewModel.insert(Student(id,name))
             findNavController().navigateUp()
         }
 
         updateButton.setOnClickListener{
             val updatedname = editStudent.text.toString()
-            viewModel.updateSingleStudent(Student(2,updatedname))
+            val id = editstudentid.text.toString().toInt()
+            viewModel.updateSingleStudent(Student(id,updatedname))
+            findNavController().navigateUp()
         }
 
 
